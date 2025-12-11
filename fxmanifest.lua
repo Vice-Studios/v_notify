@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'Vice Studios'
 description 'Custom notification system'
-version '1.1.3'
+version 'v1.1.3'
 
 ui_page 'html/index.html'
 

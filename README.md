@@ -99,4 +99,4 @@ ensure v_notify
 ```
 
 ---
-Needs help? Join our [discord](https://discord.gg/YkcxmA2a8s). 
+Needs help? Join our [discord](https://discord.gg/c8NKFKQ83W). 

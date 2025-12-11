@@ -1,64 +1,101 @@
-![gitthumps (1)](https://github.com/user-attachments/assets/b4ca9f42-00cf-4632-9f62-489a5a0dcd81)
+# v_notify — Custom FiveM Notification System
 
-![Screenshot 2025-04-11 194257](https://github.com/user-attachments/assets/4d46f56d-08ed-45ac-b273-3ae9ac3726cc)
+A modern notification system for FiveM using FontAwesome icons, smooth animations, stacking limits, and per-notification sounds.
 
-## Usage client.lua
+---
 
-#### Standard Notify
+## Features
+
+- SVG-based notification backgrounds  
+- 4 notification types: **success**, **error**, **warning**, **info**  
+- Custom titles & FontAwesome icons  
+- Per-type sound effects  
+- Auto-remove with animations  
+- Notification stacking with configurable limit  
+- Configurable through `config.lua`  
+
+---
+
+## Client Usage
+
+### Standard Notification
 ```lua
-exports['sc_notify']:notify({
-    title = "Standard-Notify", 
-    description = "This is a standard info!",
-    type = "info" --success, error, info, warning
-})
+exports['v_notify']:notify(
+    "success",                      -- notification type
+    "This is a notification!",      -- message
+    4000,                           -- duration (ms)
+    "Success Title"                 -- optional custom title
+)
+```
+### Error Example
+```lua
+exports['v_notify']:notify(
+    "error",
+    "Something went wrong!",
+    5000,
+    "Error"
+)
 ```
 
-#### Coustom Notify
+### Warning Example
 ```lua
-exports['sc_notify']:notify({
-    title = "Custom-Notify", 
-    description = "With custom icon & position!",
-    icon = "rocket",
-    iconColor = "#FF00FF",
-    position = "top-right",
-    Duration = 15000,
-    showDuration = false
-})
+exports['v_notify']:notify(
+    "warning",
+    "This is a warning message!",
+    4000,
+    "Warning"
+)
 ```
 
-## Usage server.lua
-
-#### Standard Notify
+## Server Usage
 ```lua
-TriggerClientEvent('sc_notify:notify', targetPlayerId, {
-    title = "Standard-Notify", 
-    description = "This is a standard info!",
-    type = "info" --success, error, info, warning
-})
+TriggerClientEvent('v_notify:notify', targetPlayerId,
+    "info",
+    "Welcome to the server!",
+    4000,
+    "Information"
+)
 ```
 
-#### Coustom Notify
+### Send Error From Server
 ```lua
-TriggerClientEvent('sc_notify:notify', targetPlayerId, {
-    title = "Custom-Notify", 
-    description = "With custom icon & position!",
-    icon = "rocket",
-    iconColor = "#FF00FF",
-    position = "top-right",
-    Duration = 15000,
-    showDuration = false
-})
+TriggerClientEvent('v_notify:notify', targetPlayerId,
+    "error",
+    "You lack permissions!",
+    4500,
+    "Access Denied"
+)
 ```
 
+---
+
+## Configuration (`config.lua`)
+
+```lua
+Config = {}
+
+-- Default duration for notifications (ms)
+Config.DefaultDuration = 4000
+
+-- Max visible notifications at once
+Config.MaxNotifications = 5
+
+-- Icon mapping (FontAwesome classes)
+Config.Icons = {
+    success = "fa-solid fa-circle-check",
+    error   = "fa-solid fa-circle-xmark",
+    warning = "fa-solid fa-triangle-exclamation",
+    info    = "fa-solid fa-circle-info"
+}
+```
+---
 ## Installation
-Clone or download this repository
-
-Add sc_notify to your resources directory
-
-Add this in your server.cfg :
-```
-ensure sc_notify
+1. Download or clone this repository
+2. Place the folder v_notify into your `resources/` directory
+3. Add the following to your `server.cfg`:
+```lua
+ensure v_notify
 ```
 
-» You want more? Come to my [Discord Server](https://discord.gg/Mqgewse3Yc)
-
+---
+Needs help? Join our [discord](https://discord.gg/YkcxmA2a8s). 

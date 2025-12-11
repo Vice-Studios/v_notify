@@ -1,4 +1,5 @@
 # v_notify — Custom FiveM Notification System
+<img width="342" height="471" alt="image" src="https://github.com/user-attachments/assets/aeee804a-6ac8-45c0-b10b-da711aede562" />
 
 A modern notification system for FiveM using FontAwesome icons, smooth animations, stacking limits, and per-notification sounds.
 
